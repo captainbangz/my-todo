@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`</title>
+	<style type="text/css" media="all">
+		@keyframes animate {
+			0% {
+				margin-left: 100px;
+			}
+			25% { background-color: red; margin-right: 100px}
+			50% {
+				background-color: green;}
+			75% {
+				background-color: blue;
+			}
+			100% {
+				background-color: green;
+			}
+		}
+body {
+	margin: 0;
+	padding: 0;
+}
+.content > div {
+	
+	display: grid;
+	grid-template-rows: auto auto auto;
+	row-gap: 0px;
+	margin-top: 0px;
+}
+#header {
+	background-color: #4e404c;
+	text-align: center;
+	color: white;
+	font-family: monospace;
+}
+#textBox {
+	width: 80%;
+	height: 40px;
+	margin: 80px auto auto auto;
+	padding: auto auto auto auto;
+	border-radius: 5px;
+	padding: 2px;
+	
+}
+#textB {
+	display: grid;
+	grid-template-columns: auto auto;
+	margin-right: 50px;
+}
+#add {
+	border-radius: 5px;
+	background-color: #4e404c;
+	color: white;
+}
+h4 {
+	font-family: Monospace;
+}
+#textB > div > button {
+	margin-top: 80px;
+	height: 40px;
+	width: 40px;
+}
+#textB > div > input {
+	margin-left: 70px;
+}
+#listOfTodos > li {
+	list-style: none;
+	border: 0.5px solid black;
+	width: 90%;
+	padding: 5px;
+	margin-bottom: 4px;
+	border-radius:5px;
+}
+#listOfTodos > li > button {
+	float: right;
+	border-radius: 4px;
+	background-color: #BE85CB;
+}
+
+#todoList {
+	border: 1px solid #4e404c;
+}
+#time {
+	background-color: ;
+	padding: 5px;
+	border-style: none;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div id="header">
+			<h2>My ToDo</h2>
+		</div>
+		<div id="textB">
+			<div>
+			<input type="text" name="todo" id="textBox" placeholder="enter todo" />
+			<input type="time" name="todo time" id="time" value="" placeholder="time"/>
+			</div>
+			<div>
+			<button type="submit" id="add">+</button>
+			</div>
+		</div>
+		<h4>To do list and time</h4>
+		<div id="todoList">
+			<ol id="listOfTodos">
+				
+			</ol>
+		</div>
+		<div id="bottom">
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript" charset="utf-8">
+	let time = document.getElementById('time');
+	let text = document.getElementById('textBox');
+	let add = document.getElementById('add');
+	let todoList = document.getElementById('listOfTodos');
+	add.addEventListener('click',()=>
+	{
+	let node = document.createElement('li');
+	let textNode = document.createTextNode(text.value+' @'+time.value);
+	let del = document.createElement('button');
+	del.textContent = 'x';
+	node.appendChild(textNode);
+	node.appendChild(del);
+		if(text.value == '')
+		{ alert('Please enter a task')
+		}
+		else if (text.value != ''){
+			if(time.value == ''){
+				alert('Please select time')
+			}
+			else{
+	todoList.appendChild(node);
+	del.setAttribute('id', 'delete')
+	console.log(del.parentNode)
+	text.value = '';		
+del.addEventListener('click', ()=>{
+	node.remove(del.parentElement)
+		}
+		) 
+		}
+}
+}
+)
+</script>
+</html>
